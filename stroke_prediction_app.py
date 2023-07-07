@@ -1,3 +1,19 @@
+import subprocess
+import sys
+
+# Install required packages
+def install_packages():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "scikit-learn==0.24.2"])
+
+# Install required packages if not already installed
+def check_packages():
+    try:
+        import sklearn
+    except ImportError:
+        install_packages()
+
+check_packages()
+
 import pandas as pd
 import streamlit as st
 from sklearn.linear_model import LinearRegression
