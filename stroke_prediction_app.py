@@ -18,6 +18,7 @@ import pandas as pd
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.metrics import accuracy_score
 from PIL import Image
 import requests
@@ -64,4 +65,16 @@ prediction = model.predict(input_data)[0]
 
 # Display prediction percentage
 st.write("Prediction Percentage:", round(prediction * 100, 2), "%")
+
+# Calculate Mean Squared Error (MSE)
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+
+# Calculate R-squared (R2) score
+r2 = r2_score(y_test, y_pred)
+
+# Display prediction percentage, MSE, and R2 scores
+st.write("Prediction Percentage:", round(prediction * 100, 2), "%")
+st.write("Mean Squared Error (MSE):", mse)
+st.write("R-squared (R2) Score:", r2)
 
