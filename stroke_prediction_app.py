@@ -3,10 +3,8 @@ import sys
 
 # Install required packages
 def install_packages():
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "scikit-learn==0.24.2"])
-    except subprocess.CalledProcessError as e:
-        st.error(f"An error occurred while installing packages: {e}")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "scikit-learn==0.24.2"])
+
 # Install required packages if not already installed
 def check_packages():
     try:
@@ -79,4 +77,3 @@ r2 = r2_score(y_test, y_pred)
 st.write("Prediction Percentage:", round(prediction * 100, 2), "%")
 st.write("Mean Squared Error (MSE):", mse)
 st.write("R-squared (R2) Score:", r2)
-
