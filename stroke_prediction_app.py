@@ -3,8 +3,10 @@ import sys
 
 # Install required packages
 def install_packages():
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "scikit-learn==0.24.2"])
-
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "scikit-learn==0.24.2"])
+    except subprocess.CalledProcessError as e:
+        st.error(f"An error occurred while installing packages: {e}")
 # Install required packages if not already installed
 def check_packages():
     try:
